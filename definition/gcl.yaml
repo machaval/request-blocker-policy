@@ -1,0 +1,33 @@
+---
+apiVersion: gateway.mulesoft.com/v1alpha1
+kind: Extension
+metadata:
+  labels:
+    title: Request Blocker
+    category: Security
+    interfaceScope: api,resource
+spec:
+  extends:
+    - name: extension-definition
+      namespace: default
+  properties:
+    all:
+      title: All of
+      description: The list of conditions that the request needs to have
+      type: array
+      items:
+        type: object
+        properties:
+          headerName:
+            title: Header Name
+            description: The name of the header to check
+            type: string
+          headerValue:
+            title: Header Value
+            description: The value of the header to check
+            type: string
+        required:
+          - headerName
+          - headerValue
+  required:
+    - all

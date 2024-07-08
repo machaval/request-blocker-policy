@@ -1,9 +1,8 @@
 # Request Blocker Policy
 
-This policy blocks or accept request based on header values. The user can specify the header name and value that it
-needs to have for the request to be accepted.
+This policy will accept only requests that have the header `x-forwarded-port` with the value `443`.
 
-For example:
+The configuration looks like this:
 
 ```yaml
         config: {
@@ -11,21 +10,21 @@ For example:
 }
 ```
 
-This configuration will accept only the request that have the `x-forwarded-port` with the value `443`
-
 ## Build the policy
 
-* Install all  [tools needed for the PDK](https://docs.mulesoft.com/pdk/latest/policies-pdk-prerequisites)
+* Install all [tools needed for the PDK](https://docs.mulesoft.com/pdk/latest/policies-pdk-prerequisites)
 
-* Link the project to the Business Group you want to deploy this policy
+* Install [JQ](https://jqlang.github.io/jq/download)
 
-Run `setup-business_group.sh` and select the business group you want to select
+* Clone this repository and open its directory in a terminal
+
+* Run `setup-business_group.sh` and select the business group you want to select
 
 ```bash
-setup-business_group.sh
+./setup-business_group.sh
 ```
 
-* Run make setup to configure all the tools
+* Run `make setup` to configure all the tools
 
 ```bash
 make setup
@@ -43,7 +42,8 @@ make build
 make release
 ```
 
-> IMPORTANT: Remember that the version of the asset to be deployed needs to be changed every time you want to release a
-> new version. It is being changed on the Cargo.toml file
+> IMPORTANT: Remember that the version of the asset to be deployed needs to be changed every time you want to release a new version. This can be changed in the `Cargo.toml` file. The value for asset version is under the `[package]` header with the key name `version`.
 
-* Now under the Security section on API Manager the new policy will appear
+## Use the policy
+
+* Now the new policy will appear under the Security section in API Manager.

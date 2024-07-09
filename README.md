@@ -1,14 +1,15 @@
 # Request Blocker Policy
 
-This policy will accept only requests that have the header `x-forwarded-port` with the value `443`.
+This policy will accept only requests that accept the header names and values configured on the policy configuration.
 
-The configuration looks like this:
+For example to block a request that only accepts request contaning the header `x-forwarded-port` with value `443` use:
 
 ```yaml
         config: {
   all: [ { headerName: "x-forwarded-port", headerValue: "443" } ]
 }
 ```
+It supports multiple headers and in that case it will verify that they `all` match.
 
 ## Build the policy
 

@@ -24,7 +24,7 @@ selected_id=${ids[$choice]}
 cargo_toml="Cargo.toml"
 if [ -f "$cargo_toml" ]; then
   cp "$cargo_toml" "cargo_tmp.toml"
-  cat cargo_tmp.toml | sed "s/group_id_value/\"$selected_id\"/" > $cargo_toml
+  cat cargo_tmp.toml | sed "s/group_id_value/$selected_id/" > $cargo_toml
   rm cargo_tmp.toml
   echo "Updated cargo.toml with id: $selected_id"
 else

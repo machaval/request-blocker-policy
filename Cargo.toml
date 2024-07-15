@@ -8,7 +8,7 @@ edition = "2018"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [package.metadata.anypoint]
-group_id = group_id_value
+group_id = "group_id_value"
 definition_asset_id = "request-blocker"
 implementation_asset_id = "request-blocker-flex"
 
